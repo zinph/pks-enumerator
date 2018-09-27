@@ -171,7 +171,7 @@ class LBSS(tk.Frame):
         self.LLBSZ = tk.Label(self,text="Library Size ")
         self.LBVR = tk.StringVar(value='100')
         self.LBSZ  = tk.Entry(self,textvariable=self.LBVR)
-        self.LADEX  = tk.Label(self,text="Add additional EX to each macrocycle")
+        self.LADEX  = tk.Label(self,text="Add additional ester to each macrocycle")
         self.LOUP = tk.Label(self,text="Output as:")
         self.EXTEX  = tk.IntVar(value=1)
         self.CSVO = tk.IntVar(value=1)
