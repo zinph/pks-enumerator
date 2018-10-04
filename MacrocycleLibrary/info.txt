@@ -1,0 +1,19 @@
+Building Rules
+Per macrocycle:
+
+Range of common structural motifs per macrocycle - 12 to 12
+Range of rare structural motifs per macrocycle - 0 to 12
+Range of total structural motifs per macrocycle - 12 to 12
+Prioritize - common structural motifs
+An ester was added to each macrocycle.
+
+Library
+Permutations to skip - 1000
+Library size - 100 macrocycles.
+100 macrocycles has 12 structural motifs each.
+
+common structural motifs and rare structural motifs were permuted in the following order:
+common structural motifs: ['SM002', 'SM001', 'SM001', 'SM006', 'SM008', 'SM009', 'SM004', 'SM003', 'SM013', 'SM006', 'SM004', 'SM005', 'SM003', 'SM002']
+rare structural motifs: []
+
+Time Elapsed for Enumeration: 0 DAYS: 0 HOURS: 0 MINUTES: 0.3347 SECONDS
