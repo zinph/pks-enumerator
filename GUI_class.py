@@ -172,7 +172,10 @@ class LBSS(tk.Frame):
         self.LBVR = tk.StringVar(value='100')
         self.LBSZ  = tk.Entry(self,textvariable=self.LBVR)
         self.LADEX  = tk.Label(self,text="Add additional ester to each macrocycle")
+<<<<<<< HEAD
         self.SMSK = tk.Label(self,text="Skip generation of 3D coordinates")
+=======
+>>>>>>> 53d76036acd3aec2980cfb254bcd8174dc31a43e
         self.LOUP = tk.Label(self,text="Output as:")
         self.EXTEX  = tk.IntVar(value=1)
         self.SMSKB = tk.IntVar(value=1)
