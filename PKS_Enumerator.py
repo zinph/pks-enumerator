@@ -231,6 +231,8 @@ class PKS_Enumerator:
         CPDC = 0
         CT = 0
         FT = file +'.sdf'
+        SMFL = file + '.smi'
+        SMFH = open(SMFL, 'a+')
         FH = open(FT,'a+')
         SN = self.cmd['PS']
         for i in permutations(MAL):
@@ -243,11 +245,13 @@ class PKS_Enumerator:
                             smile = 'O1C(=O)' + KPD +'1'
                         elif self.cmd['EX'] ==0:
                             smile = self.IS1(''.join(SML)+'1',1)
+                        SMFH.write(smile+'\n')
                         MCC = Chem.MolFromSmiles(smile)
-                        AllChem.Compute2DCoords(MCC)
-                        AllChem.EmbedMolecule(MCC,AllChem.ETKDG())
-                        DESL = self.DC(MCC)
+                        if self.cmd['SKD'] != 1:
+                            AllChem.Compute2DCoords(MCC)
+                            AllChem.EmbedMolecule(MCC,AllChem.ETKDG())
                         FH.write(Chem.MolToMolBlock(MCC))
+                        DESL = self.DC(MCC)
                         self.WDTF(FH,DESL)
                         CSVCP = ','.join(str(i) for i in DESL)+'\n'
                         self.csvFH.write(CSVCP)
@@ -256,6 +260,8 @@ class PKS_Enumerator:
                 else:
                     break
             CT += 1
+        SMFH.close()
+        FH.close()
         self.NFF[file] += CPDC
         NDML = list(set(MAL))
         for each in NDML:

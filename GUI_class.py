@@ -56,8 +56,8 @@ class GUI(object):
         self.MN = ttk.Notebook(self.mainframe)
         self.CP = MTFPG(self.MN,self.CFN,img_width=img_width,img_height=img_height)
         self.RP = MTFPG(self.MN,self.RFN,img_width=img_width,img_height=img_height,entry_state='disabled')
-        self.MN.add(self.CP, text='CM Structural MTs')
-        self.MN.add(self.RP,text='RR Structural MTs')
+        self.MN.add(self.CP,text='Common Structural Motifs')
+        self.MN.add(self.RP,text='Rare Structural Motifs')
         self.MN.pack(side='left')
 
     def _MRF(self):
@@ -171,30 +171,36 @@ class LBSS(tk.Frame):
         self.LLBSZ = tk.Label(self,text="Library Size ")
         self.LBVR = tk.StringVar(value='100')
         self.LBSZ  = tk.Entry(self,textvariable=self.LBVR)
-        self.LADEX  = tk.Label(self,text="Add additional EX to each macrocycle")
+        self.LADEX  = tk.Label(self,text="Add additional ester to each macrocycle")
+        self.SMSK = tk.Label(self,text="Skip generation of 3D coordinates")
         self.LOUP = tk.Label(self,text="Output as:")
         self.EXTEX  = tk.IntVar(value=1)
+        self.SMSKB = tk.IntVar(value=1)
         self.CSVO = tk.IntVar(value=1)
         self.SDFO= tk.IntVar(value=1)
         self.EXBTN = tk.Checkbutton(self,variable=self.EXTEX)
-        self.LFLN = tk.Label(self, text="Output file name:")
+        self.SMSKBN = tk.Checkbutton(self,variable=self.SMSKB)
+        self.LFLN = tk.Label(self, text="Output files directory:")
         self.FLNVR = tk.StringVar(value='MacrocycleLibrary')
         self.ENTFLN = tk.Entry(self,textvariable=self.FLNVR)
-        self.title.grid(row=0,column=1)      #Subbtitle for the area
+        self.title.grid(row=0,column=1)
         self.LPRM.grid(row=1,column=0,sticky=tk.W)
         self.PRMTO_skip.grid(row=1,column=1)
         self.LLBSZ.grid(row=2,column=0,sticky=tk.W)
         self.LBSZ.grid(row=2,column=1)
         self.LADEX.grid(row=3,column=0)
+        self.SMSK.grid(row=4,column=0)
+        self.SMSKBN.grid(row=4,column=1)
         self.EXBTN.grid(row=3,column=1)
-        self.LFLN.grid(row=4,column=0)
-        self.ENTFLN.grid(row=4,column=1)
+        self.LFLN.grid(row=5,column=0)
+        self.ENTFLN.grid(row=5,column=1)
 
     def GIP(self):
         INPD = {}
         INPD['PS'] = toint(self.PRMVR.get())
         INPD['LS']= toint(self.LBVR.get())
         INPD['EX'] = toint(self.EXTEX.get())
+        INPD['SKD'] = toint(self.SMSKB.get())
         INPD['filename'] = self.FLNVR.get()
         if INPD['LS']> 1000000:
             INPD['LS'] = 1000000
