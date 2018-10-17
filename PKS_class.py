@@ -17,7 +17,7 @@ from itertools import *
 
 ### LIMITED VERSION --- Max library size = 1000000
 
-class PKS_Enumerator:
+class PKS_class:
 
     def __init__(self, cmd, SMR):
         self.SMD = {'SM001':"C",'SM002':"C(C)",'SM003':"C(CC)",'SM004':"C(O)",'SM005':"C(OC)",'SM006':"C(O)(C)",'SM007':"C(OC)(C)",'SM008':"C(CC=O)",'SM009':"C(=O)",'SM010':"C(C)(F)",'SM011':"C(OC(=O)C)",'SM012':"C2(OC2)",'SM013':"C=C",'SM014':"C(OC(=O)CC)",'SM015':"N(C)",'SM016':"C3OC3"}

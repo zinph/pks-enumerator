@@ -16,7 +16,7 @@ max library size is 1 million and RSMs aren't allowed.
 import os
 import time
 import tkinter as tk
-from PKS_Enumerator import *
+from PKS_class import *
 from GUI_class import *
 import shutil
 import tempfile
@@ -47,7 +47,7 @@ def generate(gui):
     NDD = CRD(BLDR['filename'])
     os.chdir(NDD)
     start_time = time.time()
-    sample = PKS_Enumerator(BLDR, SML)
+    sample = PKS_class(BLDR, SML)
     sample.GAL()
     duration = CNVT(time.time()-start_time)
     print('Time Elapsed for Enumeration: ' + str(duration))
