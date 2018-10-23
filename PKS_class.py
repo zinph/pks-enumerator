@@ -42,6 +42,7 @@ class PKS_class:
             self.SMI.update({i:[0,{1:0}]})
 
     def DC(self, KPD):
+        'Computes six molecular descriptors for the input compound via RDKit library: Molecular Weight - MW, Hydrophobicity - SlogP, Hydrogen Bond Acceptors - HBA, Hydrogen Bond Donors - HBD, Topological Polar Surface Area - TPSA, and Rotatable Bonds – NRB.'
         MW = Descriptors.MolWt(KPD)
         TPSA = Descriptors.TPSA(KPD)
         HBA = Descriptors.NumHAcceptors(KPD)
@@ -73,6 +74,7 @@ class PKS_class:
             self.SMI[self.inv_SMD[each]]=self.SMI.pop(each)
 
     def PC(self, SML, LGD):
+        'Generates all different combinations of SMs per input length. '
         RQL = []
         for j in combinations(SML,LGD):
             list(j).sort()
@@ -82,6 +84,7 @@ class PKS_class:
         return RQL
 
     def BS(self, LGIV, TGR):
+        'Searches target item in the given list. Implemented to ensure no duplicate macrocycles are generated.'
         LGIV.sort()
         L = 0
         H = len(LGIV)-1
@@ -105,6 +108,9 @@ class PKS_class:
                 os.remove(i)
 
     def GAL(self):
+        '''
+        Generate macrocycles for all total lengths.
+        '''
         self.GLP()
         for j in self.TLL:
             if self.TNKPDs < self.cmd['LS']:
@@ -120,6 +126,9 @@ class PKS_class:
                 return
 
     def GM(self,total_length):
+        '''
+        Generate macrocycles.
+        '''
         LFEL =[]
         for p in self.CRL:
             if p[0]+p[1] == total_length:
@@ -140,6 +149,9 @@ class PKS_class:
                         return
 
     def USMI(self,MAIL):
+        '''
+        Update structural motif info.
+        '''
         for each in self.CEL:
             EAC = MAIL.count(each)
             if EAC not in self.SMI[each][1]:
@@ -150,6 +162,9 @@ class PKS_class:
                 self.SMI[each][1].update({EAC:0})
 
     def GMML(self,mini,maxi):
+        '''
+        Generate a list from minimum to maximum. for example, if min is 2 and max is 5, generate [2,3,4,5].
+        '''
         MML = []
         for i in range(maxi-mini+1):
             MML.append(mini)
@@ -168,6 +183,9 @@ class PKS_class:
         out.close()
 
     def GLP(self):
+        '''
+        Generates all possible common and rare SM length arrangements based on total number of SMs allowed in the program.
+        '''
         CL = self.GMML(self.cmd['CE'][0],self.cmd['CE'][1])
         RL = self.GMML(self.cmd['RE'][0],self.cmd['RE'][1])
         for i in self.TLL:
@@ -184,6 +202,9 @@ class PKS_class:
             self.CRL.sort()
 
     def WDTF(self, FM, DSCL):
+        '''
+        Create SDF files.
+        '''
         FM.write('> <MolecularWeight>\n'+str(DSCL[0])+'\n\n')
         FM.write('> <TPSA>\n'+str(DSCL[1])+'\n\n')
         FM.write('> <MolLogP>\n'+str(DSCL[2])+'\n\n')
@@ -192,6 +213,9 @@ class PKS_class:
         FM.write('> <NumRotatableBonds>\n'+str(DSCL[5])+'\n\n$$$$\n')
 
     def NFFW(self, time):
+        '''
+        Write info.txt file.
+        '''
         if self.cmd['AOB'] ==1:
             C_or_R = 'common structural motifs'
         else:
@@ -228,6 +252,10 @@ class PKS_class:
         FM.close()
 
     def GC(self,MAL,file):
+        '''
+        Permutate and generate a list of compounds stitched together from each list with proper format.
+        Executes commands for ester chain & number of compounds generated.
+        '''
         CPDC = 0
         CT = 0
         FT = file +'.sdf'
