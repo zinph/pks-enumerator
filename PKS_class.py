@@ -15,8 +15,6 @@ from rdkit.Chem import Descriptors
 from rdkit.Chem import AllChem
 from itertools import *
 
-### LIMITED VERSION --- Max library size = 1000000
-
 class PKS_class:
 
     def __init__(self, cmd, SMR):

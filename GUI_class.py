@@ -55,7 +55,8 @@ class GUI(object):
     def _make_MN(self,img_width=100,img_height=100):
         self.MN = ttk.Notebook(self.mainframe)
         self.CP = MTFPG(self.MN,self.CFN,img_width=img_width,img_height=img_height)
-        self.RP = MTFPG(self.MN,self.RFN,img_width=img_width,img_height=img_height,entry_state='disabled')
+##        self.RP = MTFPG(self.MN,self.RFN,img_width=img_width,img_height=img_height,entry_state='disabled')
+        self.RP = MTFPG(self.MN,self.RFN,img_width=img_width,img_height=img_height)
         self.MN.add(self.CP,text='Common Structural Motifs')
         self.MN.add(self.RP,text='Rare Structural Motifs')
         self.MN.pack(side='left')
@@ -118,10 +119,12 @@ class MCSE(tk.Frame):
         self.RCSMTT = tk.Entry(self,textvariable=self.DFCEMX)
         self.LRRFR = tk.Label(self,text="Range of RR SMs from ")
         self.DFREMN = tk.StringVar(value='0')
-        self.RRRSMF = tk.Entry(self, state='disabled')
+##        self.RRRSMF = tk.Entry(self, state='disabled')
+        self.RRRSMF = tk.Entry(self, textvariable=self.DFREMN)
         self.LRSMT = tk.Label(self,text=" to ")
         self.DFREMX  = tk.StringVar(value='0')
-        self.RRSMTT = tk.Entry(self, state='disabled')
+##        self.RRSMTT = tk.Entry(self, state='disabled')
+        self.RRSMTT = tk.Entry(self, textvariable=self.DFREMX)
         self.LTF = tk.Label(self,text="Range of Total SMs from ")
         self.DFTEMN = tk.StringVar(value='12')
         self.RTTSMF = tk.Entry(self,textvariable=self.DFTEMN)
@@ -202,8 +205,8 @@ class LBSS(tk.Frame):
         INPD['EX'] = toint(self.EXTEX.get())
         INPD['SKD'] = toint(self.SMSKB.get())
         INPD['filename'] = self.FLNVR.get()
-        if INPD['LS']> 1000000:
-            INPD['LS'] = 1000000
+##        if INPD['LS']> 1000000:
+##            INPD['LS'] = 1000000
         return INPD
 
 class MTNTBK(ttk.Notebook):

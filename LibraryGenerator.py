@@ -59,7 +59,7 @@ def generate(gui):
 
 def main():
 
-    COMMON_SM_LIST = ['SM001','SM002','SM003','SM004','SM005','SM006','SM008','SM009','SM013'] #filnames of gif files. I am not including extension in case it needs to be different
+    COMMON_SM_LIST = ['SM001','SM002','SM003','SM004','SM005','SM006','SM008','SM009','SM013'] #filnames of gif files. Not including extension in case it needs to be different
     RARE_SM_LIST   = ['SM007','SM010','SM011','SM012','SM014','SM015','SM016']
     ext            = 'gif'
     root = tk.Tk()

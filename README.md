@@ -6,8 +6,4 @@ PIL, version = 4.2.1
 
 To run the program, simply run LibraryGenerator.py. 
 It should prompt the user-friendly GUI for you to manage the inputs and 
-generate the desired library. 
-
-Limits:
-The current software is limited to only common structural motifs, and
-the library size of 1 million compounds. 
+generate the desired library.
