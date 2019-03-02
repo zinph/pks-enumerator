@@ -7,3 +7,5 @@ PIL, version = 4.2.1
 To run the program, simply run LibraryGenerator.py. 
 It should prompt the user-friendly GUI for you to manage the inputs and 
 generate the desired library.
+
+If you find this program useful, please cite the paper at https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0307-6. 
